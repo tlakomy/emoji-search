@@ -1,5 +1,5 @@
-describe("my first e2e test", () => {
-    it("actually works", () => {
+describe("Emoji Search app", () => {
+    it("successfully renders the page header", () => {
         cy.visit("/");
         cy.contains("Emoji Search");
     });
