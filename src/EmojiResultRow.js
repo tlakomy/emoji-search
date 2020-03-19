@@ -13,7 +13,8 @@ export default class EmojiResultsRow extends PureComponent {
         const src = `//cdn.jsdelivr.net/emojione/assets/png/${codePointHex}.png`;
         return (
             <div
-                className="component-emoji-result-row copy-to-clipboard"
+                className="emoji-result-row copy-to-clipboard"
+                data-cy="emoji-row"
                 data-clipboard-text={this.props.symbol}
             >
                 <img alt={this.props.title} src={src} />
