@@ -26,4 +26,13 @@ describe("Emoji Search app", () => {
         cy.get("[data-cy='emoji-row']").should("have.length", 1);
         cy.contains("Cactus");
     });
+
+    it('shows a "emoji not found" message', () => {
+        cy.get("[data-cy='emoji-search-input']").type(
+            "emoji that does not exist"
+        );
+        cy.get("[data-cy='emoji-row']").should("have.length", 0);
+        cy.contains("Emojis not found");
+        cy.contains("Try searching for something else");
+    });
 });

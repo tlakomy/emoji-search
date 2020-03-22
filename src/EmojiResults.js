@@ -5,6 +5,15 @@ import Clipboard from "clipboard";
 import EmojiResultRow from "./EmojiResultRow";
 import "./EmojiResults.css";
 
+const EmojiNotFound = () => {
+    return (
+        <div className="emoji-not-found">
+            <h1>Emojis not found</h1>
+            <p>Try searching for something else</p>
+        </div>
+    );
+};
+
 export default class EmojiResults extends PureComponent {
     static propTypes = {
         emojiData: PropTypes.array
@@ -19,15 +28,20 @@ export default class EmojiResults extends PureComponent {
     }
 
     render() {
+        const { emojiData } = this.props;
         return (
             <div className="component-emoji-results">
-                {this.props.emojiData.map(emojiData => (
-                    <EmojiResultRow
-                        key={emojiData.title}
-                        symbol={emojiData.symbol}
-                        title={emojiData.title}
-                    />
-                ))}
+                {emojiData.length > 0 ? (
+                    emojiData.map(emojiData => (
+                        <EmojiResultRow
+                            key={emojiData.title}
+                            symbol={emojiData.symbol}
+                            title={emojiData.title}
+                        />
+                    ))
+                ) : (
+                    <EmojiNotFound />
+                )}
             </div>
         );
     }
