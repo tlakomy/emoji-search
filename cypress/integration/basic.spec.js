@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+const ENDPOINT = "/default/getEmojis";
+
 describe("Emoji Search app", () => {
     beforeEach(() => {
         cy.visit("/");
@@ -34,5 +36,12 @@ describe("Emoji Search app", () => {
         cy.get("[data-cy='emoji-row']").should("have.length", 0);
         cy.contains("Emojis not found");
         cy.contains("Try searching for something else");
+    });
+
+    it("shows a loading screen when backend is not responding", () => {
+        cy.server();
+        cy.route("GET", ENDPOINT, []).as("load");
+
+        cy.wait("@load");
     });
 });
