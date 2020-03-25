@@ -15,11 +15,12 @@ describe("Emoji Search app", () => {
         cy.get("[data-cy='emoji-row']").should("have.length", 20);
     });
 
-    it("is a very long test", () => {
+    it.skip("is a very long test", () => {
+        // TODO - make this test faster
         cy.wait(10000);
     });
 
-    it.only("allows users to search for an emoji", () => {
+    it("allows users to search for an emoji", () => {
         cy.get("[data-cy='emoji-search-input']").type("joy");
         cy.get("[data-cy='emoji-row']").should("have.length", 2);
         cy.contains("Joy Cat");
