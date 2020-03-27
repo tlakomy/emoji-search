@@ -5,6 +5,7 @@ const ENDPOINT = "/default/getEmojis";
 describe("Emoji Search app", () => {
     beforeEach(() => {
         cy.visit("/");
+        cy.viewport("ipad-2", "landscape");
     });
 
     it("successfully renders the page header", () => {
@@ -13,11 +14,6 @@ describe("Emoji Search app", () => {
 
     it("renders the list of emojis", () => {
         cy.get("[data-cy='emoji-row']").should("have.length", 20);
-    });
-
-    it.skip("is a very long test", () => {
-        // TODO - make this test faster
-        cy.wait(10000);
     });
 
     it("allows users to search for an emoji", () => {
